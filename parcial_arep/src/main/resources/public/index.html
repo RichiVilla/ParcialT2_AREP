@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Example</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<h1>Factores</h1>
+<form action="/factores">
+    <label for="value">Valor:</label><br>
+    <input type="number" id="value" name="value" value=""><br><br>
+    <input type="button" value="Enviar" onclick="loadGetMsg()">
+</form>
+<div id="getrespmsg"></div>
+
+<script>
+    function loadGetMsg() {
+        let nameVar = document.getElementById("value").value;
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function() {
+            document.getElementById("getrespmsg").innerHTML =
+            this.responseText;
+        }
+        xhttp.open("GET", "/factores?value="+nameVar);
+        xhttp.send();
+    }
+</script>
+
+<h1>Primos</h1>
+<form action="/primos">
+    <label for="value">Valor:</label><br>
+    <input type="number" id="valuee" name="num" value=""><br><br>
+    <input type="button" value="Enviar" onclick="loadGetMsg2()">
+</form>
+<div id="getrespmsg2"></div>
+
+<script>
+    function loadGetMsg2() {
+         let nameVar = document.getElementById("valuee").value;
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function() {
+            document.getElementById("getrespmsg2").innerHTML =
+            this.responseText;
+        }
+        xhttp.open("GET", "/primos?num="+nameVar);
+        xhttp.send();
+    }
+</script>
+</body>
+</html>
